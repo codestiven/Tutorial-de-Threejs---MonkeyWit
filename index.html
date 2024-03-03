@@ -26,6 +26,13 @@
         //creando una escena
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x2a3b4c);
+        scene.fog = new THREE.Fog(0xff0000, 0.1, 10);
+
+        //cargar textura
+        const loader = new THREE.TextureLoader();
+        const texture = loader.load('background.jpg' , function (texture) {
+            scene.background = texture;
+        });
 
         //creando una camara
         const camera = new THREE.PerspectiveCamera(
@@ -41,7 +48,10 @@
 
         //agregar geometria
         var geometry = new THREE.BoxGeometry();
-        var material = new THREE.MeshBasicMaterial({ color: 0x00ff00  , wireframe: true });
+        var material = new THREE.MeshBasicMaterial({ 
+            color: 0x00ff00, 
+           //wireframe: true
+        });
         var cube = new THREE.Mesh(geometry, material);
 
         scene.add(cube);
