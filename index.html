@@ -60,18 +60,25 @@
         controls.minDistance = 3;
         controls.maxDistance = 5;
 
+        window.addEventListener('resize', onWindowResize, false);
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }	
+
         //deshabilitar zoom
         // controls.enableZoom = false;
 
         //deshabilitar rotacion
         // controls.enableRotate = false;
 
-        //habilitar el damping
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.5;
+        // //habilitar el damping
+        // controls.enableDamping = true;
+        // controls.dampingFactor = 0.5;
 
-        //limite de rotacion de camara
-        controls.maxPolarAngle = Math.PI / 2;
+        // //limite de rotacion de camara
+        // controls.maxPolarAngle = Math.PI / 2;
 
 
 
@@ -84,8 +91,8 @@
         var animate = function () {
             requestAnimationFrame(animate);
 
-            //cube.rotation.x += 0.01;
-            //cube.rotation.y += 0.01;
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
 
             renderer.render(scene, camera);
         };
